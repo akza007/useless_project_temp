@@ -1,0 +1,62 @@
+export const ENEMY_TYPES = {
+  STREET_PUNK: {
+    key: 'street_punk',
+    name: 'Street Punk',
+    health: 40,
+    maxHealth: 40,
+    damage: 8,
+    speed: 100,
+    attackRange: 45,
+    attackCooldown: 1200,
+    scoreReward: 50,
+    coinReward: 10,
+    xpReward: 20,
+    color: 0x3498db,
+    type: 'melee'
+  },
+  RUNNER: {
+    key: 'runner',
+    name: 'Neon Runner',
+    health: 25,
+    maxHealth: 25,
+    damage: 6,
+    speed: 210,
+    attackRange: 35,
+    attackCooldown: 800,
+    scoreReward: 75,
+    coinReward: 15,
+    xpReward: 25,
+    color: 0xe74c3c,
+    type: 'charger'
+  },
+  BRUISER: {
+    key: 'bruiser',
+    name: 'Iron Bruiser',
+    health: 110,
+    maxHealth: 110,
+    damage: 20,
+    speed: 65,
+    attackRange: 55,
+    attackCooldown: 2000,
+    scoreReward: 150,
+    coinReward: 35,
+    xpReward: 50,
+    color: 0x8e44ad,
+    type: 'heavy'
+  },
+  RANGED: {
+    key: 'ranged',
+    name: 'Cyber Gunner',
+    health: 35,
+    maxHealth: 35,
+    damage: 10,
+    speed: 80,
+    attackRange: 280,
+    attackCooldown: 1800,
+    scoreReward: 100,
+    coinReward: 20,
+    xpReward: 35,
+    color: 0x2ecc71,
+    type: 'ranged'
+  }
+};
