@@ -271,6 +271,7 @@ export class TextureGenerator {
       { key: 'roxie_richter', mainColor: '#8e44ad', accent: '#ff0080' },
       { key: 'todd_ingram', mainColor: '#ffffff', accent: '#00f0ff' },
       { key: 'katayanagi_twins', mainColor: '#2ecc71', accent: '#1abc9c' },
+      { key: 'nega_scott', mainColor: '#2c3e50', accent: '#8e44ad' },
       { key: 'gideon_graves', mainColor: '#ffffff', accent: '#ff0055' }
     ];
 

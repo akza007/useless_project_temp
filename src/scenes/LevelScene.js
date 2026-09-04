@@ -8,6 +8,7 @@ import { LucasLee } from '../bosses/LucasLee.js';
 import { RoxieRichter } from '../bosses/RoxieRichter.js';
 import { ToddIngram } from '../bosses/ToddIngram.js';
 import { KatayanagiTwins } from '../bosses/KatayanagiTwins.js';
+import { NegaScott } from '../bosses/NegaScott.js';
 import { GideonGraves } from '../bosses/GideonGraves.js';
 import { Pickup } from '../entities/Pickup.js';
 import { HUD } from '../ui/HUD.js';
@@ -96,7 +97,7 @@ export class LevelScene extends Phaser.Scene {
   }
 
   createBossEntranceSign() {
-    const label = this.currentLevel === 6 ? "STAGE 6: BRUTAL GAUNTLET" : "WARNING!\nRIVAL ARENA AHEAD ▶";
+    const label = "WARNING!\nRIVAL ARENA AHEAD ▶";
     this.add.text(1800, 320, label, {
       fontFamily: "'Press Start 2P', monospace",
       fontSize: "14px",
@@ -133,11 +134,7 @@ export class LevelScene extends Phaser.Scene {
         this.spawnEnemyWave(3);
         this.waveSpawnedX.push(1350);
       } else if (this.player.x >= 1800) {
-        if (this.currentLevel === 6) {
-          this.triggerGauntletCompletion();
-        } else {
-          this.triggerBossSpawn();
-        }
+        this.triggerBossSpawn();
       }
     }
   }
@@ -145,12 +142,7 @@ export class LevelScene extends Phaser.Scene {
   spawnEnemyWave(waveIndex) {
     const px = this.player.x;
 
-    if (this.currentLevel === 6) {
-      this.enemies.add(new Bruiser(this, px + 300, 340));
-      this.enemies.add(new Runner(this, px + 400, 340));
-      this.enemies.add(new RangedEnemy(this, px + 520, 340));
-      this.enemies.add(new StreetPunk(this, px + 600, 340));
-    } else if (waveIndex === 1) {
+    if (waveIndex === 1) {
       this.enemies.add(new StreetPunk(this, px + 350, 340));
       this.enemies.add(new Runner(this, px + 450, 340));
     } else if (waveIndex === 2) {
@@ -162,27 +154,6 @@ export class LevelScene extends Phaser.Scene {
       this.enemies.add(new Bruiser(this, px + 400, 340));
       this.enemies.add(new RangedEnemy(this, px + 520, 340));
     }
-  }
-
-  triggerGauntletCompletion() {
-    this.bossSpawned = true;
-    audioManager.playVictory();
-
-    const txt = this.add.text(480, 240, "GAUNTLET CLEARED!\nPROCEED TO GIDEON'S ARENA!", {
-      fontFamily: "'Press Start 2P', monospace",
-      fontSize: "20px",
-      color: "#00f0ff",
-      align: "center",
-      stroke: "#000000",
-      strokeThickness: 6
-    }).setOrigin(0.5).setScrollFactor(0).setDepth(200);
-
-    this.time.delayedCall(2000, () => {
-      txt.destroy();
-      this.saveData.currentLevel = 7;
-      SaveSystem.saveGame(this.saveData);
-      this.scene.start('UpgradeScene');
-    });
   }
 
   triggerBossSpawn() {
@@ -203,9 +174,11 @@ export class LevelScene extends Phaser.Scene {
     } else if (this.currentLevel === 3) {
       this.boss = new RoxieRichter(this, spawnX, spawnY, bossInfo);
     } else if (this.currentLevel === 4) {
-      this.boss = new ToddIngram(this, spawnX, spawnY, bossInfo);
+      this.boss = new NegaScott(this, spawnX, spawnY, bossInfo);
     } else if (this.currentLevel === 5) {
       this.boss = new KatayanagiTwins(this, spawnX, spawnY, bossInfo);
+    } else if (this.currentLevel === 6) {
+      this.boss = new ToddIngram(this, spawnX, spawnY, bossInfo);
     } else {
       this.boss = new GideonGraves(this, spawnX, spawnY, bossInfo);
     }

@@ -84,9 +84,6 @@ export class VictoryScene extends Phaser.Scene {
     if (!saveData.defeatedRivals.includes(this.bossData.id)) {
       saveData.defeatedRivals.push(this.bossData.id);
     }
-    if (this.bossData.id === 5 && !saveData.defeatedRivals.includes(6)) {
-      saveData.defeatedRivals.push(6);
-    }
 
     if (this.bossData.id < 7) {
       saveData.currentLevel = Math.max(saveData.currentLevel, this.bossData.id + 1);

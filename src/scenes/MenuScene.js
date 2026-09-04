@@ -127,9 +127,9 @@ export class MenuScene extends Phaser.Scene {
       { id: 1, name: "STAGE 1: MATTHEW PATEL (RIVAL 1)" },
       { id: 2, name: "STAGE 2: LUCAS LEE (RIVAL 2)" },
       { id: 3, name: "STAGE 3: ROXIE RICHTER (RIVAL 3)" },
-      { id: 4, name: "STAGE 4: TODD INGRAM (RIVAL 4)" },
-      { id: 5, name: "STAGE 5: KATAYANAGI TWINS (RIVALS 5 & 6)" },
-      { id: 6, name: "STAGE 6: BRUTAL GAUNTLET" },
+      { id: 4, name: "STAGE 4: NEGA SCOTT (SHADOW RIVAL)" },
+      { id: 5, name: "STAGE 5: KATAYANAGI TWINS (RIVAL 5)" },
+      { id: 6, name: "STAGE 6: TODD INGRAM (RIVAL 6)" },
       { id: 7, name: "STAGE 7: GIDEON GRAVES (FINAL BOSS)" }
     ];
 

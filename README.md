@@ -9,7 +9,15 @@ A fast-paced 2D retro arcade beat-'em-up game inspired by classic arcade brawler
 ## Basic Details
 
 ### Team Members
-- Team Lead: Akza Treesa Mathews - MITS (25cs231@mgits.ac.in)
+- **Team Lead**: Glena Maries Dias
+- **Team Member**: Akza Treesa Mathews
+
+### Team Collaboration & Equal Participation
+This project was developed under a joint **Equal Collaboration System** with **equal (50% - 50%) participation** from both team members across all stages of project design, game architecture, graphics rendering, sound synthesis, and documentation:
+- **Glena Maries Dias (Team Lead)**: Lead Systems & Gameplay Architect — Game logic state machine, combat mechanics, rival boss AI algorithms, upgrade shop system, and scene routing.
+- **Akza Treesa Mathews (Team Member)**: Lead Graphics & Sound Engineer — Procedural pixel art texture generator, Web Audio API 8-bit sound synthesizer, UI HUD elements, sprite animations, and stage level design.
+
+---
 
 ### Project Description
 A fully functional browser-based retro 2D arcade beat-'em-up game built from scratch using HTML5, JavaScript (ES6+), and Phaser.js 3. Face off against the League of Seven Rivals across 7 escalating stages, mastering combos, dodges, special attacks, and stage progression.
@@ -22,6 +30,34 @@ An arcade beat-'em-up that lets you play as Scott Pilgrim, jump into neon-lit ci
 
 ---
 
+## Screenshots & Demo Video
+
+### Screenshots
+
+| Retro Arcade Main Menu | Stage Brawling & Combat |
+|:---:|:---:|
+| ![Main Menu](images/Screenshot%202026-09-04%20065910.png) <br> *Main Menu & Stage Selection System* | ![Arcade Gameplay](images/Screenshot%202026-09-04%20093333.png) <br> *In-game beat-'em-up combat action* |
+
+| Character & Boss Encounter | Upgrade Shop & Stat Boosting |
+|:---:|:---:|
+| ![Rival Boss](images/Screenshot%202026-09-04%20093405.png) <br> *Rival Arena Boss Encounter* | ![Upgrade Shop](assets/screenshots/media__1788486299888.png) <br> *In-game shop for spending coins on stat upgrades* |
+
+| Victory & Story Conclusion | Shadow Rival Sprite Art |
+|:---:|:---:|
+| ![Victory Screen](assets/screenshots/media__1788486615230.png) <br> *Defeating the rivals to reunite with Ramona* | ![Nega Scott Art](assets/screenshots/nega_scott.png) <br> *Custom Boss Pixel Art Renderings* |
+
+---
+
+### Demo Working Video
+
+📹 **Project Demo Video Recording**:
+
+<video src="images/Screen%20Recording%202026-09-04%20074442.mp4" controls="controls" width="100%"></video>
+
+*Note: If the video player above does not play directly in your viewer, you can access the raw demo recording in the repository at [`images/Screen Recording 2026-09-04 074442.mp4`](file:///c:/Users/ADMIN/Desktop/rival-rush/images/Screen%20Recording%202026-09-04%20074442.mp4).*
+
+---
+
 ## Story & Rivals Structure
 
 * **Protagonist**: Scott Pilgrim (Playable fighter)
@@ -31,9 +67,9 @@ An arcade beat-'em-up that lets you play as Scott Pilgrim, jump into neon-lit ci
 1. **Stage 1**: **Matthew Patel** — First Evil Ex (Mystic Fireballs & Demon Hipster Chicks)
 2. **Stage 2**: **Lucas Lee** — Skater / Action Star (Skateboard Grind Charge & Heavy Stunt Slam)
 3. **Stage 3**: **Roxie Richter** — Half-Ninja (Ninja Teleportation & Shadow Whip Slash)
-4. **Stage 4**: **Todd Ingram** — Vegan Bassist (Vegan Telekinetic Pulses & Forcefield Push)
-5. **Stage 5**: **Kyle & Ken Katayanagi** — Conjoined-Twin Duo Boss fight (counts as Rivals #5 & #6 with synchronized sonic pulses)
-6. **Stage 6**: **Brutal Pre-Final Endurance Gauntlet** (Escalating enemy waves of Punks, Runners, Bruisers, and Cyber Gunners)
+4. **Stage 4**: **Nega Scott** — Shadow Doppelganger (Shadow Dash & Dark Energy Pulses)
+5. **Stage 5**: **Kyle & Ken Katayanagi** — Conjoined-Twin Duo Boss (Synchronized sonic pulses)
+6. **Stage 6**: **Todd Ingram** — Vegan Bassist (Vegan Telekinetic Pulses & Forcefield Push)
 7. **Stage 7**: **Gideon Graves** — Final Boss (4-Phase Arena Battle with Subspace attacks)
 
 ---
@@ -64,7 +100,7 @@ An arcade beat-'em-up that lets you play as Scott Pilgrim, jump into neon-lit ci
 ### Project Architecture
 - `src/scenes/`: BootScene, MenuScene, CharacterSelectScene, LevelScene, UpgradeScene, VictoryScene, GameOverScene, PauseScene
 - `src/entities/`: Player, Enemy, Boss, Pickup
-- `src/bosses/`: Custom AI implementations for all seven rivals
+- `src/bosses/`: Custom AI implementations for all seven rivals (MatthewPatel, LucasLee, RoxieRichter, NegaScott, KatayanagiTwins, ToddIngram, GideonGraves)
 - `src/enemies/`: Street Punk, Runner, Bruiser, Ranged Enemy
 - `src/systems/`: CombatSystem, TextureGenerator, AudioManager, SaveSystem
 - `src/data/`: bossData, playerData, enemyData
