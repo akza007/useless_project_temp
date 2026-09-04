@@ -1,3 +1,4 @@
+import Phaser from 'phaser';
 import { BootScene } from './scenes/BootScene.js';
 import { MenuScene } from './scenes/MenuScene.js';
 import { CharacterSelectScene } from './scenes/CharacterSelectScene.js';
@@ -7,7 +8,7 @@ import { VictoryScene } from './scenes/VictoryScene.js';
 import { GameOverScene } from './scenes/GameOverScene.js';
 import { PauseScene } from './scenes/PauseScene.js';
 
-const Phaser = window.Phaser;
+window.Phaser = Phaser;
 
 const config = {
   type: Phaser.AUTO,

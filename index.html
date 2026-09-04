@@ -42,7 +42,12 @@
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <script src="./phaser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.80.1/dist/phaser.min.js"></script>
+  <script>
+    if (typeof Phaser === 'undefined') {
+      document.write('<script src="./phaser.min.js"><\/script>');
+    }
+  </script>
 </head>
 <body>
   <div id="game-container" tabindex="0"></div>
