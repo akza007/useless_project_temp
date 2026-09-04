@@ -17,10 +17,10 @@ export class Boss extends Phaser.Physics.Arcade.Sprite {
     this.maxHealth = bossData.maxHealth;
     this.damage = bossData.damage;
     this.speed = bossData.speed;
-    this.setScale(0.15);
+    this.setScale(2.2);
     this.setCollideWorldBounds(true);
-    this.setSize(180, 480);
-    this.setOffset(57, 40);
+    this.setSize(36, 54);
+    this.setOffset(14, 8);
 
     this.isAttacking = false;
     this.isHurt = false;

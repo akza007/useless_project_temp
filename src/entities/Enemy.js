@@ -18,10 +18,10 @@ export class Enemy extends Phaser.Physics.Arcade.Sprite {
     this.attackCooldownTime = config.attackCooldown;
     this.type = config.type;
 
-    this.setScale(0.15);
+    this.setScale(1.8);
     this.setCollideWorldBounds(true);
-    this.setSize(28, 38);
-    this.setOffset(10, 10);
+    this.setSize(24, 38);
+    this.setOffset(12, 8);
 
     // AI States
     this.state = 'IDLE';

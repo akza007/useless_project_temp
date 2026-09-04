@@ -37,8 +37,8 @@ export class VictoryScene extends Phaser.Scene {
       }).setOrigin(0.5);
 
       // Render Scott Pilgrim & Ramona Flowers side-by-side!
-      this.add.sprite(440, 200, 'alex_ryder', 0).setScale(0.15);
-      this.add.sprite(520, 200, 'ramona_flowers').setScale(0.15);
+      this.add.sprite(440, 200, 'alex_ryder', 0).setScale(2.5);
+      this.add.sprite(520, 200, 'ramona_flowers').setScale(2.5);
 
       this.add.text(480, 250, "SCOTT & RAMONA REUNITED!", {
         fontFamily: "'Press Start 2P', monospace",

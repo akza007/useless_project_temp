@@ -14,11 +14,11 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     this.disableInteractive();
 
     this.stats = stats;
-    this.setScale(0.15);
+    this.setScale(2.0);
     this.setCollideWorldBounds(true);
     this.setBounce(0);
-    this.setSize(180, 480);
-    this.setOffset(57, 40);
+    this.setSize(24, 42);
+    this.setOffset(12, 6);
 
     // States
     this.isAttacking = false;

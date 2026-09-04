@@ -26,7 +26,7 @@ export class CharacterSelectScene extends Phaser.Scene {
     const scottCard = this.add.rectangle(300, 230, 360, 240, 0x100c24, 0.9)
       .setStrokeStyle(3, 0x00f0ff);
 
-    this.add.sprite(180, 230, 'alex_ryder', 0).setScale(0.15);
+    this.add.sprite(180, 230, 'alex_ryder', 0).setScale(2.5);
 
     this.add.text(260, 130, "SCOTT PILGRIM", {
       fontFamily: "'Press Start 2P', monospace",
@@ -62,7 +62,7 @@ export class CharacterSelectScene extends Phaser.Scene {
     const ramonaCard = this.add.rectangle(680, 230, 340, 240, 0x100c24, 0.9)
       .setStrokeStyle(3, 0xff0080);
 
-    this.add.sprite(560, 230, 'ramona_flowers').setScale(0.15);
+    this.add.sprite(560, 230, 'ramona_flowers').setScale(2.5);
 
     this.add.text(640, 130, "RAMONA FLOWERS", {
       fontFamily: "'Press Start 2P', monospace",
