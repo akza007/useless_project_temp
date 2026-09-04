@@ -96,6 +96,15 @@ export class VictoryScene extends Phaser.Scene {
 
     if (!isFinalBoss) {
       const nextStage = Math.min(7, this.bossData.id + 1);
+      this.hasTransitioned = false;
+
+      // Automatically transition to next stage after 2.5 seconds
+      this.time.delayedCall(2500, () => {
+        if (!this.hasTransitioned && this.sys && this.sys.settings.active) {
+          this.hasTransitioned = true;
+          this.scene.start('LevelScene', { stage: nextStage });
+        }
+      });
 
       const nextBtn = this.add.text(320, 460, `[ START STAGE ${nextStage} ]`, {
         fontFamily: "'Press Start 2P', monospace",
@@ -106,6 +115,8 @@ export class VictoryScene extends Phaser.Scene {
       }).setOrigin(0.5).setInteractive({ useHandCursor: true });
 
       nextBtn.on('pointerdown', () => {
+        if (this.hasTransitioned) return;
+        this.hasTransitioned = true;
         audioManager.playCoin();
         this.scene.start('LevelScene', { stage: nextStage });
       });
@@ -119,6 +130,8 @@ export class VictoryScene extends Phaser.Scene {
       }).setOrigin(0.5).setInteractive({ useHandCursor: true });
 
       upgradeBtn.on('pointerdown', () => {
+        if (this.hasTransitioned) return;
+        this.hasTransitioned = true;
         audioManager.playCoin();
         this.scene.start('UpgradeScene');
       });

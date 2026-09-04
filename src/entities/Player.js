@@ -1,4 +1,5 @@
 import { audioManager } from '../systems/AudioManager.js';
+import { SaveSystem } from '../systems/SaveSystem.js';
 
 const Phaser = window.Phaser;
 
@@ -256,8 +257,13 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     this.setTint(0xff0000);
     audioManager.playGameOver();
 
+    // Always reset stage progress to 1 on death
+    const saveData = SaveSystem.loadGame();
+    saveData.currentLevel = 1;
+    SaveSystem.saveGame(saveData);
+
     this.scene.time.delayedCall(1500, () => {
-      this.scene.scene.start('GameOverScene', { score: this.stats.score, level: this.scene.currentLevel });
+      this.scene.scene.start('GameOverScene', { score: this.stats.score, level: 1 });
     });
   }
 }

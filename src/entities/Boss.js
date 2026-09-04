@@ -147,12 +147,15 @@ export class Boss extends Phaser.Physics.Arcade.Sprite {
     audioManager.stopBGM();
     audioManager.playVictory();
 
-    if (this.scene.hud) {
-      this.scene.hud.hideBossBar();
+    const currentScene = this.scene;
+    const bossData = this.bossData;
+
+    if (currentScene.hud) {
+      currentScene.hud.hideBossBar();
     }
 
     // Large RIVAL DEFEATED! popup
-    const defeatedTxt = this.scene.add.text(480, 240, "RIVAL DEFEATED!", {
+    const defeatedTxt = currentScene.add.text(480, 240, "RIVAL DEFEATED!", {
       fontFamily: "'Press Start 2P', monospace",
       fontSize: "40px",
       color: "#feca57",
@@ -160,24 +163,28 @@ export class Boss extends Phaser.Physics.Arcade.Sprite {
       strokeThickness: 8
     }).setOrigin(0.5).setScrollFactor(0).setDepth(200);
 
-    this.scene.tweens.add({
+    currentScene.tweens.add({
       targets: defeatedTxt,
       scale: { from: 0.5, to: 1.2 },
       duration: 800,
       ease: 'Back.out',
       onComplete: () => {
-        this.scene.time.delayedCall(1500, () => {
+        currentScene.time.delayedCall(1200, () => {
           defeatedTxt.destroy();
-          this.scene.onBossDefeated(this.bossData);
+          if (currentScene && currentScene.onBossDefeated) {
+            currentScene.onBossDefeated(bossData);
+          }
         });
       }
     });
 
-    this.scene.tweens.add({
+    currentScene.tweens.add({
       targets: this,
       alpha: 0,
-      duration: 1000,
-      onComplete: () => this.destroy()
+      duration: 2200,
+      onComplete: () => {
+        if (this.active) this.destroy();
+      }
     });
   }
 }

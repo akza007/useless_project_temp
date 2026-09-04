@@ -40,9 +40,8 @@ export class MenuScene extends Phaser.Scene {
       repeat: -1
     });
 
-    const currentStage = Math.min(7, Math.max(1, this.saveData.currentLevel || 1));
     const options = [
-      { text: `START STAGE ${currentStage}`, action: () => this.scene.start('LevelScene', { stage: currentStage }) },
+      { text: "START GAME", action: () => this.scene.start('LevelScene', { stage: 1 }) },
       { text: "SELECT STAGE", action: () => this.showStageSelect() },
       { text: "CHARACTER", action: () => this.scene.start('CharacterSelectScene') },
       { text: "UPGRADES", action: () => this.scene.start('UpgradeScene') },

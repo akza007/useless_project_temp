@@ -33,16 +33,20 @@ export class RoxieRichter extends Boss {
     this.attackCooldown = true;
 
     audioManager.playDash();
-    this.setAlpha(0.2);
+
+    // Solid magenta flash effect instead of transparency
+    this.setTint(0xff0080);
 
     this.scene.time.delayedCall(250, () => {
       if (this.active && !this.isDead) {
-        const targetX = player.x + (player.facingRight ? -70 : 70);
+        const targetX = player.x + (player.facingRight ? -80 : 80);
         this.setPosition(targetX, player.y);
+        if (this.body) this.body.reset(targetX, player.y);
         this.setAlpha(1);
+        this.clearTint();
 
         const dist = Phaser.Math.Distance.Between(this.x, this.y, player.x, player.y);
-        if (dist <= 65) {
+        if (dist <= 75) {
           this.scene.combatSystem.registerEnemyAttack(this, player);
         }
 
@@ -50,7 +54,7 @@ export class RoxieRichter extends Boss {
       }
     });
 
-    this.scene.time.delayedCall(2200, () => {
+    this.scene.time.delayedCall(2000, () => {
       this.attackCooldown = false;
     });
   }

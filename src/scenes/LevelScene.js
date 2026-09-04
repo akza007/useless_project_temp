@@ -188,12 +188,12 @@ export class LevelScene extends Phaser.Scene {
   triggerBossSpawn() {
     this.bossSpawned = true;
 
-    this.cameras.main.stopFollow();
-    this.cameras.main.pan(2000, 270, 800);
-    this.physics.world.setBounds(1520, 0, 960, 540);
+    this.physics.world.setBounds(1440, 0, 960, 540);
+    this.cameras.main.setBounds(1440, 0, 960, 540);
+    this.cameras.main.startFollow(this.player, true, 0.1, 0.1);
 
     const bossInfo = BOSS_DATA.find(b => b.id === this.currentLevel) || BOSS_DATA[0];
-    const spawnX = 2200;
+    const spawnX = Math.min(2250, this.player.x + 220);
     const spawnY = 340;
 
     if (this.currentLevel === 1) {

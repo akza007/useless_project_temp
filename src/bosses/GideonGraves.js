@@ -103,6 +103,7 @@ export class GideonGraves extends Boss {
       if (this.active && !this.isDead) {
         const targetX = player.x + (player.facingRight ? -60 : 60);
         this.setPosition(targetX, player.y);
+        if (this.body) this.body.reset(targetX, player.y);
         this.setAlpha(1);
 
         const dist = Phaser.Math.Distance.Between(this.x, this.y, player.x, player.y);

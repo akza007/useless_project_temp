@@ -1,4 +1,5 @@
 import { audioManager } from '../systems/AudioManager.js';
+import { SaveSystem } from '../systems/SaveSystem.js';
 
 const Phaser = window.Phaser;
 
@@ -35,20 +36,25 @@ export class GameOverScene extends Phaser.Scene {
       color: "#00f0ff"
     }).setOrigin(0.5);
 
-    const retryBtn = this.add.text(480, 360, "[ RETRY ]", {
+    const retryBtn = this.add.text(480, 360, "[ RESTART FROM STAGE 1 ]", {
       fontFamily: "'Press Start 2P', monospace",
-      fontSize: "18px",
-      color: "#ffffff"
+      fontSize: "16px",
+      color: "#00f0ff",
+      stroke: "#000000",
+      strokeThickness: 4
     }).setOrigin(0.5).setInteractive({ useHandCursor: true });
 
     retryBtn.on('pointerdown', () => {
       audioManager.playCoin();
-      this.scene.start('LevelScene', { stage: this.currentLevel });
+      const saveData = SaveSystem.loadGame();
+      saveData.currentLevel = 1;
+      SaveSystem.saveGame(saveData);
+      this.scene.start('LevelScene', { stage: 1 });
     });
 
     const menuBtn = this.add.text(480, 420, "[ MAIN MENU ]", {
       fontFamily: "'Press Start 2P', monospace",
-      fontSize: "16px",
+      fontSize: "14px",
       color: "#aaaaaa"
     }).setOrigin(0.5).setInteractive({ useHandCursor: true });
 
