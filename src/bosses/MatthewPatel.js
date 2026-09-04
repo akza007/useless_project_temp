@@ -61,7 +61,7 @@ export class MatthewPatel extends Boss {
 
     audioManager.playSpecial();
     const chick = this.scene.physics.add.sprite(this.x, this.y - 60, 'matthew_patel', 0);
-    chick.setScale(0.8);
+    chick.setScale(0.15);
     chick.setTint(0xff0080);
     chick.body.setAllowGravity(false);
 

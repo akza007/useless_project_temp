@@ -37,8 +37,8 @@ export class VictoryScene extends Phaser.Scene {
       }).setOrigin(0.5);
 
       // Render Scott Pilgrim & Ramona Flowers side-by-side!
-      this.add.sprite(440, 200, 'alex_ryder', 11).setScale(2);
-      this.add.sprite(520, 200, 'ramona_flowers').setScale(2);
+      this.add.sprite(440, 200, 'alex_ryder', 0).setScale(0.15);
+      this.add.sprite(520, 200, 'ramona_flowers').setScale(0.15);
 
       this.add.text(480, 250, "SCOTT & RAMONA REUNITED!", {
         fontFamily: "'Press Start 2P', monospace",
@@ -94,20 +94,47 @@ export class VictoryScene extends Phaser.Scene {
 
     SaveSystem.saveGame(saveData);
 
-    const btnText = isFinalBoss ? "[ RETURN TO MENU ]" : "[ CONTINUE TO UPGRADES ]";
-    const continueBtn = this.add.text(480, 460, btnText, {
-      fontFamily: "'Press Start 2P', monospace",
-      fontSize: "14px",
-      color: "#00f0ff"
-    }).setOrigin(0.5).setInteractive({ useHandCursor: true });
+    if (!isFinalBoss) {
+      const nextStage = Math.min(7, this.bossData.id + 1);
 
-    continueBtn.on('pointerdown', () => {
-      audioManager.playCoin();
-      if (isFinalBoss) {
-        this.scene.start('MenuScene');
-      } else {
+      const nextBtn = this.add.text(320, 460, `[ START STAGE ${nextStage} ]`, {
+        fontFamily: "'Press Start 2P', monospace",
+        fontSize: "14px",
+        color: "#00f0ff",
+        stroke: "#000000",
+        strokeThickness: 4
+      }).setOrigin(0.5).setInteractive({ useHandCursor: true });
+
+      nextBtn.on('pointerdown', () => {
+        audioManager.playCoin();
+        this.scene.start('LevelScene', { stage: nextStage });
+      });
+
+      const upgradeBtn = this.add.text(640, 460, "[ UPGRADE SHOP ]", {
+        fontFamily: "'Press Start 2P', monospace",
+        fontSize: "14px",
+        color: "#feca57",
+        stroke: "#000000",
+        strokeThickness: 4
+      }).setOrigin(0.5).setInteractive({ useHandCursor: true });
+
+      upgradeBtn.on('pointerdown', () => {
+        audioManager.playCoin();
         this.scene.start('UpgradeScene');
-      }
-    });
+      });
+    } else {
+      const menuBtn = this.add.text(480, 460, "[ RETURN TO MENU ]", {
+        fontFamily: "'Press Start 2P', monospace",
+        fontSize: "14px",
+        color: "#00f0ff",
+        stroke: "#000000",
+        strokeThickness: 4
+      }).setOrigin(0.5).setInteractive({ useHandCursor: true });
+
+      menuBtn.on('pointerdown', () => {
+        audioManager.playCoin();
+        this.scene.start('MenuScene');
+      });
+    }
   }
 }

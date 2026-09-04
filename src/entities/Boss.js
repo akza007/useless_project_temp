@@ -17,12 +17,10 @@ export class Boss extends Phaser.Physics.Arcade.Sprite {
     this.maxHealth = bossData.maxHealth;
     this.damage = bossData.damage;
     this.speed = bossData.speed;
-    this.themeColor = bossData.themeColor;
-
-    this.setScale(1.4);
+    this.setScale(0.15);
     this.setCollideWorldBounds(true);
-    this.setSize(36, 48);
-    this.setOffset(14, 10);
+    this.setSize(180, 480);
+    this.setOffset(57, 40);
 
     this.isAttacking = false;
     this.isHurt = false;
@@ -102,6 +100,12 @@ export class Boss extends Phaser.Physics.Arcade.Sprite {
     });
   }
 
+  setFrameSafe(frame) {
+    if (this.texture && this.texture.has(frame)) {
+      this.setFrame(frame);
+    }
+  }
+
   takeDamage(amount, attackerX) {
     if (this.isDead) return;
 
@@ -125,12 +129,12 @@ export class Boss extends Phaser.Physics.Arcade.Sprite {
     }
 
     this.isHurt = true;
-    this.setFrame(3);
+    this.setFrameSafe(3);
 
     this.scene.time.delayedCall(250, () => {
       if (this.active && !this.isDead) {
         if (!this.isEnraged) this.clearTint();
-        this.setFrame(0);
+        this.setFrameSafe(0);
         this.isHurt = false;
       }
     });
@@ -139,7 +143,7 @@ export class Boss extends Phaser.Physics.Arcade.Sprite {
   die() {
     this.isDead = true;
     this.setVelocity(0, 0);
-    this.setFrame(3);
+    this.setFrameSafe(3);
     audioManager.stopBGM();
     audioManager.playVictory();
 

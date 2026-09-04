@@ -7,7 +7,7 @@ export class KatayanagiTwins extends Boss {
 
     // Spawn Second Twin (Ken Katayanagi)
     this.twin = scene.physics.add.sprite(x + 50, y, 'katayanagi_twins', 0);
-    this.twin.setScale(1.4);
+    this.twin.setScale(0.15);
     this.twin.setTint(0x1abc9c);
     scene.physics.add.existing(this.twin);
     scene.physics.add.collider(this.twin, scene.platforms);

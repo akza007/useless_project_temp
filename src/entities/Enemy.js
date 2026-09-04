@@ -18,6 +18,7 @@ export class Enemy extends Phaser.Physics.Arcade.Sprite {
     this.attackCooldownTime = config.attackCooldown;
     this.type = config.type;
 
+    this.setScale(0.15);
     this.setCollideWorldBounds(true);
     this.setSize(28, 38);
     this.setOffset(10, 10);
@@ -79,6 +80,12 @@ export class Enemy extends Phaser.Physics.Arcade.Sprite {
     }
   }
 
+  setFrameSafe(frame) {
+    if (this.texture && this.texture.has(frame)) {
+      this.setFrame(frame);
+    }
+  }
+
   executeAttack(player) {
     this.isAttacking = true;
     this.attackCooldown = true;
@@ -97,7 +104,7 @@ export class Enemy extends Phaser.Physics.Arcade.Sprite {
 
     this.scene.time.delayedCall(500, () => {
       if (this.active && !this.isDead) {
-        this.setFrame(0);
+        this.setFrameSafe(0);
         this.isAttacking = false;
       }
     });
@@ -118,13 +125,13 @@ export class Enemy extends Phaser.Physics.Arcade.Sprite {
     }
 
     this.isHurt = true;
-    this.setFrame(3); // Hurt frame
+    this.setFrameSafe(3); // Hurt frame
     this.setTint(0xff4757);
 
     this.scene.time.delayedCall(300, () => {
       if (this.active && !this.isDead) {
         this.clearTint();
-        this.setFrame(0);
+        this.setFrameSafe(0);
         this.isHurt = false;
       }
     });
@@ -133,7 +140,7 @@ export class Enemy extends Phaser.Physics.Arcade.Sprite {
   die() {
     this.isDead = true;
     this.setVelocity(0, 0);
-    this.setFrame(3);
+    this.setFrameSafe(3);
     this.setTint(0x555555);
 
     if (this.healthBarBg) this.healthBarBg.destroy();

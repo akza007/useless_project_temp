@@ -29,10 +29,24 @@ export class UpgradeScene extends Phaser.Scene {
 
     this.renderUpgrades();
 
-    const backBtn = this.add.text(480, 480, "[ BACK TO MENU ]", {
+    const nextStage = Math.min(7, (this.saveData.currentLevel || 1));
+    const startBtn = this.add.text(480, 465, `[ START STAGE ${nextStage} ]`, {
       fontFamily: "'Press Start 2P', monospace",
-      fontSize: "14px",
-      color: "#ffffff"
+      fontSize: "15px",
+      color: "#00f0ff",
+      stroke: "#000000",
+      strokeThickness: 4
+    }).setOrigin(0.5).setInteractive({ useHandCursor: true });
+
+    startBtn.on('pointerdown', () => {
+      audioManager.playCoin();
+      this.scene.start('LevelScene', { stage: nextStage });
+    });
+
+    const backBtn = this.add.text(480, 505, "[ BACK TO MENU ]", {
+      fontFamily: "'Press Start 2P', monospace",
+      fontSize: "11px",
+      color: "#aaaaaa"
     }).setOrigin(0.5).setInteractive({ useHandCursor: true });
 
     backBtn.on('pointerdown', () => {

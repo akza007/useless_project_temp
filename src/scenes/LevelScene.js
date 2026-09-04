@@ -53,8 +53,10 @@ export class LevelScene extends Phaser.Scene {
     this.boss = null;
     this.bossSpawned = false;
 
-    // Playable Player (Scott Pilgrim)
-    this.player = new Player(this, 100, 380, this.saveData.playerStats);
+    // Playable Player (Scott Pilgrim - Full HP & Energy on start)
+    this.saveData.playerStats.health = this.saveData.playerStats.maxHealth;
+    this.saveData.playerStats.energy = this.saveData.playerStats.maxEnergy;
+    this.player = new Player(this, 100, 340, this.saveData.playerStats);
     this.physics.add.collider(this.player, this.platforms);
 
     // Camera setup
@@ -144,21 +146,21 @@ export class LevelScene extends Phaser.Scene {
     const px = this.player.x;
 
     if (this.currentLevel === 6) {
-      this.enemies.add(new Bruiser(this, px + 300, 400));
-      this.enemies.add(new Runner(this, px + 400, 400));
-      this.enemies.add(new RangedEnemy(this, px + 520, 400));
-      this.enemies.add(new StreetPunk(this, px + 600, 400));
+      this.enemies.add(new Bruiser(this, px + 300, 340));
+      this.enemies.add(new Runner(this, px + 400, 340));
+      this.enemies.add(new RangedEnemy(this, px + 520, 340));
+      this.enemies.add(new StreetPunk(this, px + 600, 340));
     } else if (waveIndex === 1) {
-      this.enemies.add(new StreetPunk(this, px + 350, 400));
-      this.enemies.add(new Runner(this, px + 450, 400));
+      this.enemies.add(new StreetPunk(this, px + 350, 340));
+      this.enemies.add(new Runner(this, px + 450, 340));
     } else if (waveIndex === 2) {
-      this.enemies.add(new StreetPunk(this, px + 300, 400));
-      this.enemies.add(new Bruiser(this, px + 420, 400));
-      this.enemies.add(new RangedEnemy(this, px + 500, 400));
+      this.enemies.add(new StreetPunk(this, px + 300, 340));
+      this.enemies.add(new Bruiser(this, px + 420, 340));
+      this.enemies.add(new RangedEnemy(this, px + 500, 340));
     } else if (waveIndex === 3) {
-      this.enemies.add(new Runner(this, px + 300, 400));
-      this.enemies.add(new Bruiser(this, px + 400, 400));
-      this.enemies.add(new RangedEnemy(this, px + 520, 400));
+      this.enemies.add(new Runner(this, px + 300, 340));
+      this.enemies.add(new Bruiser(this, px + 400, 340));
+      this.enemies.add(new RangedEnemy(this, px + 520, 340));
     }
   }
 
@@ -192,7 +194,7 @@ export class LevelScene extends Phaser.Scene {
 
     const bossInfo = BOSS_DATA.find(b => b.id === this.currentLevel) || BOSS_DATA[0];
     const spawnX = 2200;
-    const spawnY = 380;
+    const spawnY = 340;
 
     if (this.currentLevel === 1) {
       this.boss = new MatthewPatel(this, spawnX, spawnY, bossInfo);

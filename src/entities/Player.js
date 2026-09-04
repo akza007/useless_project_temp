@@ -13,10 +13,11 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     this.disableInteractive();
 
     this.stats = stats;
+    this.setScale(0.15);
     this.setCollideWorldBounds(true);
     this.setBounce(0);
-    this.setSize(24, 38);
-    this.setOffset(12, 10);
+    this.setSize(180, 480);
+    this.setOffset(57, 40);
 
     // States
     this.isAttacking = false;
@@ -97,8 +98,8 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     const moveLeft = this.keys.left.isDown || this.keys.leftArrow.isDown;
     const moveRight = this.keys.right.isDown || this.keys.rightArrow.isDown;
     const jump = Phaser.Input.Keyboard.JustDown(this.keys.up) ||
-                 Phaser.Input.Keyboard.JustDown(this.keys.upArrow) ||
-                 Phaser.Input.Keyboard.JustDown(this.keys.space);
+      Phaser.Input.Keyboard.JustDown(this.keys.upArrow) ||
+      Phaser.Input.Keyboard.JustDown(this.keys.space);
 
     if (moveLeft) {
       this.setVelocityX(-this.stats.speed);

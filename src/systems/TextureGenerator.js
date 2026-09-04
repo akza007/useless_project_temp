@@ -16,7 +16,22 @@ export class TextureGenerator {
     ctx.fillRect(x, y, w, h);
   }
 
+  static registerPlayerAnimations(scene) {
+    const keys = ['alex_idle', 'alex_walk', 'alex_punch', 'alex_kick', 'alex_heavy', 'alex_hurt', 'alex_victory'];
+    keys.forEach(key => {
+      if (!scene.anims.exists(key)) {
+        scene.anims.create({
+          key: key,
+          frames: [{ key: 'alex_ryder', frame: 0 }],
+          frameRate: 1,
+          repeat: -1
+        });
+      }
+    });
+  }
+
   static createPlayerTextures(scene) {
+    this.registerPlayerAnimations(scene);
     if (scene.textures.exists('alex_ryder')) return;
 
     // Sprite canvas: 192x192 (4 cols x 4 rows of 48x48)
